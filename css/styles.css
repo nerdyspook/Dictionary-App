@@ -24,3 +24,38 @@ body {
   height: 100vh;
   background-color: var(--primary-color);
 }
+
+.container {
+  background-color: #f9fafb;
+  width: 75vw;
+  height: 20vh;
+  border-radius: 1rem;
+  box-shadow: 0 20px 40px rgba(1, 35, 63, 0.2);
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 100%;
+}
+
+.search-box input {
+  width: 60%;
+  padding: 0.5rem;
+  padding-left: 0;
+  font-size: 1rem;
+  border: none;
+  outline: none;
+  border-bottom: 2px solid var(--primary-color);
+  background-color: #f9fafb;
+}
+
+.search-box button {
+  background-color: var(--primary-color);
+  color: #f9fafb;
+  padding: 0.8rem 1.2rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 0.6rem;
+}
