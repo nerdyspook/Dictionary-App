@@ -5,16 +5,70 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- ======================== Font Awesome ======================= -->
+    <script src="https://kit.fontawesome.com/a9f9b0dec9.js" crossorigin="anonymous"></script>
+
+    <!-- ============================ CSS ============================ -->
     <link rel="stylesheet" href="/css/styles.css">
 
+    <link rel="shortcut icon" type="image/png" href="/img/favicon.png">
     <title>Dictionary App</title>
 </head>
 <body>
     <div class="container">
+
+        <header>English Dictionary</header>
+
         <div class="search-box">
             <input type="text" placeholder="Type here..." id="input-word">
+            <i class="fas fa-search"></i>
+            <i class="fas fa-times"></i>
+
             <button id="search-btn">Search</button>
         </div>
+
+        <ul>
+            <li class="word">
+                <div class="details">
+                    <p>happy</p>
+                    <span>adjective /'hapi/</span>
+                </div>
+
+                <i class="fas fa-volume-up"></i>
+            </li>
+
+            <div class="content">
+
+                <li class="meaning">
+                    <div class="details">
+                        <p>Meaning</p>
+                        <span>feeling or showing pleasure</span>
+                    </div>
+                </li>
+
+                <li class="example">
+                    <div class="details">
+                        <p>Example</p>
+                        <span>Prakash came in looking happy</span>
+                    </div>
+                </li>
+
+                <li class="synonyms">
+                    <div class="details">
+                        <p>Synonyms</p>
+                        <div class="list">
+                            <span>glad,</span>
+                            <span>contented,</span>
+                            <span>delighted,</span>
+                            <span>cheerful,</span>
+                            <span>jouful</span>
+                        </div>
+                    </div>
+                </li>
+
+            </div>
+
+        </ul>
     </div>
 
     <script src="/js/main.js"></script>
