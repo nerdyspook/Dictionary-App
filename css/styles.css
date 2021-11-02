@@ -85,10 +85,26 @@ body {
 }
 
 .info {
+  background-color: #f9fafb;
   font-size: 0.9rem;
   color: #6b7280;
+  padding: 0.5rem;
+  border-radius: 0.7rem;
   text-align: center;
   margin-bottom: 1rem;
+}
+
+.info span {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.info.search {
+  background-color: #6ee7b7;
+}
+
+.info.failed {
+  background-color: #fca5a5;
 }
 
 .container ul {
