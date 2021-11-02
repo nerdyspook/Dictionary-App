@@ -3,6 +3,12 @@ const searchInput = document.querySelector("input");
 const searchBtn = document.querySelector("#search-btn");
 const infoText = document.querySelector(".info");
 
+const searchWord = document.querySelector(".word p");
+const wordPhonetic = document.querySelector(".word span");
+const meaning = document.querySelector(".meaning span");
+const example = document.querySelector(".example span");
+
+
 function details(result, word){
     console.log(result);
 
@@ -14,6 +20,14 @@ function details(result, word){
         infoText.innerHTML = result.message;
     }else {
         infoText.classList.remove("search");
+        container.classList.add("active");
+
+        phonetics = `${result[0].meanings[0].partOfSpeech} /${result[0].phonetics[0].text}`
+
+        searchWord.innerText = result[0].word;
+        wordPhonetic.innerText = phonetics;
+        meaning.innerText = result[0].meanings[0].definitions[0].definition;
+        example.innerText = result[0].meanings[0].definitions[0].example;
     }
 }
 

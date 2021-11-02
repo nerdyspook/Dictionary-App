@@ -94,6 +94,10 @@ body {
   margin-bottom: 1rem;
 }
 
+.container.active .info {
+  display: none;
+}
+
 .info span {
   font-size: 1rem;
   font-weight: 700;
@@ -108,7 +112,17 @@ body {
 }
 
 .container ul {
-  display: none;
+  /* display: none; */
+  height: 0;
+  opacity: 0;
+  /* overflow: hidden; */
+  transition: all 0.5s ease;
+}
+
+.container.active ul {
+  /* display: block; */
+  height: 100%;
+  opacity: 1;
 }
 
 ul li {
@@ -134,6 +148,15 @@ li:last-child {
 .word span {
   color: #6b7280;
 }
+
+.content {
+  max-height: 20vh;
+  overflow-y: auto;
+}
+
+/* .content::-webkit-scrollbar {
+  width: 0px;
+} */
 
 .word i {
   cursor: pointer;
