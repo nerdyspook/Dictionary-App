@@ -7,7 +7,9 @@ const searchWord = document.querySelector(".word p");
 const wordPhonetic = document.querySelector(".word span");
 const meaning = document.querySelector(".meaning span");
 const example = document.querySelector(".example span");
-
+const synonyms = document.querySelector(".synonyms .list");
+const volumeIcon = document.querySelector(".fa-volume-up")
+let audio;
 
 function details(result, word){
     console.log(result);
@@ -28,6 +30,20 @@ function details(result, word){
         wordPhonetic.innerText = phonetics;
         meaning.innerText = result[0].meanings[0].definitions[0].definition;
         example.innerText = result[0].meanings[0].definitions[0].example;
+        
+        audio = new Audio("https:" + result[0].phonetics[0].audio);
+
+        if(result[0].meanings[0].definitions[0].synonyms[0] == undefined ){
+            synonyms.parentElement.style.display = "none";
+        }else{
+            synonyms.parentElement.style.display = "block";
+        }
+
+        synonyms.innerHTML = "";
+        for(let i = 0; i < 5; i++){
+            let tag  =`<span> ${result[0].meanings[0].definitions[0].synonyms[i]},</span>`
+            synonyms.insertAdjacentHTML("beforeend", tag);
+        }
     }
 }
 
@@ -51,4 +67,8 @@ searchInput.addEventListener("keyup", e =>{
 
 searchBtn.addEventListener("click", (se) => {
     fetchApi(searchInput.value);
+});
+
+volumeIcon.addEventListener("click", () => {
+    audio.play();
 });
