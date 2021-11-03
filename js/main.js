@@ -8,7 +8,8 @@ const wordPhonetic = document.querySelector(".word span");
 const meaning = document.querySelector(".meaning span");
 const example = document.querySelector(".example span");
 const synonyms = document.querySelector(".synonyms .list");
-const volumeIcon = document.querySelector(".fa-volume-up")
+const volumeIcon = document.querySelector(".fa-volume-up");
+const removeIcon = document.querySelector(".fa-times");
 let audio;
 
 function details(result, word){
@@ -33,7 +34,7 @@ function details(result, word){
         
         audio = new Audio("https:" + result[0].phonetics[0].audio);
 
-        if(result[0].meanings[0].definitions[0].synonyms[0] == undefined ){
+        if(result[0].meanings[0].definitions[0].synonyms[0] === undefined ){
             synonyms.parentElement.style.display = "none";
         }else{
             synonyms.parentElement.style.display = "block";
@@ -41,13 +42,14 @@ function details(result, word){
 
         synonyms.innerHTML = "";
         for(let i = 0; i < 5; i++){
-            let tag  =`<span> ${result[0].meanings[0].definitions[0].synonyms[i]},</span>`
+            let tag  =`<span onclick=searchSynonym('${result[0].meanings[0].definitions[0].synonyms[i]}')> ${result[0].meanings[0].definitions[0].synonyms[i]},</span>`
             synonyms.insertAdjacentHTML("beforeend", tag);
         }
     }
 }
 
 function fetchApi(word) {
+    container.classList.remove("active");
     infoText.style.color = "#1F2937";
     infoText.classList.add("search");
     infoText.innerHTML = `Searching the meaning of <span>"${word}"</span>` 
@@ -58,6 +60,12 @@ function fetchApi(word) {
     .then(response => response.json())
     .then(result => details(result, word));
 };
+
+function searchSynonym(word) {
+    searchInput.value = word;
+    fetchApi(word);
+    container.classList.remove("active");
+}
 
 searchInput.addEventListener("keyup", e =>{
     if (e.key === "Enter"){
@@ -72,3 +80,10 @@ searchBtn.addEventListener("click", (se) => {
 volumeIcon.addEventListener("click", () => {
     audio.play();
 });
+
+removeIcon.addEventListener("click", () => {
+    searchInput.value = "";
+    searchInput.focus();
+    container.classList.remove("active");
+    infoText.innerText = "Type a word and press ENTER/SEARCH button to get meaning, example, pronunciation and synonyms.";
+})
