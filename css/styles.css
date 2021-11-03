@@ -183,3 +183,15 @@ li:last-child {
   cursor: pointer;
   text-decoration: underline;
 }
+
+@media screen and (min-width: 768px) {
+  .container {
+    width: 55vw;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .container {
+    width: 45vw;
+  }
+}
